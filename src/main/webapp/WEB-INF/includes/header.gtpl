@@ -34,9 +34,17 @@
 		            visible=!visible;
 		        });
 
-		        \$(".printer").click(function() {
+		        \$(".printer1").click(function() {
+		            \$('.result').css({'visibility':'visible'});
+		            visible = true;
                     window.print();
                 });
+
+                 \$(".printer2").click(function() {
+                	\$('.result').css({'visibility':'hidden'});
+                	visible = false;
+                    window.print();
+                 });
 	        });
 
     </script>
@@ -52,16 +60,16 @@
                 <p>
                     <A href="fract.groovy?signs=%2B">Fractions +</A><BR/>
                		<A href="fract.groovy?signs=%2B,-">Fractions +/-</A> <BR/>
-           			<A href="fract.groovy?signs=%2A">Fractions *</A><BR/>
-           			<A href="fract.groovy?signs=%2F">Fractions /</A><BR/>
+           			<A href="fract.groovy?signs=%2A">Fractions &times;</A><BR/>
+           			<A href="fract.groovy?signs=:">Fractions &divide;</A><BR/>
            			<A href="customfrac.gtpl">Custom fractions</A><BR/>
            		</p>
            		<p>
                     <A href="int.groovy?signs=%2B">Integers +</A><BR/>
                		<A href="int.groovy?signs=%2B,-">Integers +/-</A> <BR/>
-           			<A href="int.groovy?signs=%2A">Integers *</A><BR/>
-           			<A href="int.groovy?signs=%2F">Integers /</A><BR/>
-           			<A href="int.groovy?signs=%2F&reminder=yes">Integers / <BR/><sup>(with reminder)</sup></A><BR/>
+           			<A href="int.groovy?signs=%2A">Integers &times;</A><BR/>
+           			<A href="int.groovy?signs=:">Integers &divide;</A><BR/>
+           			<A href="int.groovy?signs=:&reminder=yes">Integers &divide; <BR/><sup>(with reminder)</sup></A><BR/>
            			<A href="customint.gtpl">Custom integers</A><BR/>
            		</p>
            		<p>

@@ -33,7 +33,7 @@ class FractionFormula implements Renderable {
                 };
                 break;
             case "*": res = f1 * f2; break;
-            case "/": res = f1 / f2; break;
+            case ":": res = f1 / f2; break;
             default: throw new Exception("Undefined op $sign")
         }
 
@@ -52,7 +52,7 @@ class FractionFormula implements Renderable {
 
         PartsFraction f1
         PartsFraction f2
-        if (sign != "/") {
+        if (sign != ":") {
             f1 = PartsFraction.createRandomInteger(max, min)
             f2 = PartsFraction.createRandomInteger(max, min)
         } else if (withremainder) {
@@ -73,7 +73,7 @@ class FractionFormula implements Renderable {
                 };
                 break;
             case "*": res = f1 * f2; break;
-            case "/": res = f1 / f2;
+            case ":": res = f1 / f2;
                 if (res.properWhole < 1) {
                     def t = f1; f1 = f2; f2 = t; res = f1 / f2
                 };

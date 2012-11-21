@@ -21,20 +21,28 @@ class FormulaRenderer implements Renderer {
     }
 
     String render(Renderable r) {
-        if (! r instanceof FractionFormula) {
+        if (!r instanceof FractionFormula) {
             throw new RuntimeException("Can render only formulas, received $r")
         }
         FractionFormula t = r as FractionFormula
         StringBuilder builder = new StringBuilder()
         List<PartsFraction> fractions = t.fractions
         List<String> signs = t.signs
-        for(int i=0;i<fractions.size()-1;i++) {
+        for (int i = 0; i < fractions.size() - 1; i++) {
             builder.append(fractionRenderer.render(fractions[i]))
-            builder.append("<span class='${FractionRenderer.WHOLE_CLASS}'> ${signs[i]} </span>")
+            builder.append("<span class='${FractionRenderer.WHOLE_CLASS}'> ${render(signs[i])} </span>")
         }
-        builder.append(fractionRenderer.render(fractions[fractions.size()-1]))
+        builder.append(fractionRenderer.render(fractions[fractions.size() - 1]))
         builder.append("<span class='${FractionRenderer.WHOLE_CLASS}'> = </span>")
-        builder.append("<span class='$RESULT_CLASS'>${fractionRenderer.render(t.res)}</span>")
+        builder.append("<span class='$RESULT_CLASS'> ${fractionRenderer.render(t.res)} </span>")
         return builder.toString()
+    }
+
+    static String render(String s) {
+        switch (s) {
+            case "*": "&times;"; break
+            case ":": "&divide;"; break
+            default: s
+        }
     }
 }
