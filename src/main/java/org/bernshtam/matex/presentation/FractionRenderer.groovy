@@ -1,7 +1,6 @@
 package org.bernshtam.matex.presentation
 
-import org.bernshtam.matex.FractionFormula
-import org.bernshtam.matex.PartsFraction
+import org.bernshtam.matex.FractionNumber
 import org.bernshtam.matex.Renderable
 import org.bernshtam.matex.Renderer
 
@@ -14,14 +13,11 @@ import org.bernshtam.matex.Renderer
 class FractionRenderer implements Renderer {
 
 
-    static String WHOLE_CLASS = "whole"
-    static String FRAC_CLASS = "frac"
-
-    String render(Renderable r) {
-        if (!r instanceof PartsFraction) {
+    String render(PresentationFactory factory, Renderable r) {
+        if (!r instanceof FractionNumber) {
             throw new RuntimeException("Can render only fraction, received $r")
         }
-        PartsFraction t = r as PartsFraction
+        FractionNumber t = r as FractionNumber
         StringBuilder builder = new StringBuilder()
         if (t.printInt())
             builder.append("<span class='${WHOLE_CLASS}'>${t.properWhole}</span>\n")

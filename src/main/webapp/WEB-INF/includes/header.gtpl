@@ -57,6 +57,7 @@
        </div><!-- end header -->
 
        <div id="left" class="noPrint">
+                <h3>2 Fractions</h3>
                 <p>
                     <A href="fract.groovy?signs=%2B">Fractions +</A><BR/>
                		<A href="fract.groovy?signs=%2B,-">Fractions +/-</A> <BR/>
@@ -64,14 +65,22 @@
            			<A href="fract.groovy?signs=:">Fractions &divide;</A><BR/>
            			<A href="customfrac.gtpl">Custom fractions</A><BR/>
            		</p>
+                <h3>2 Integers</h3>
            		<p>
                     <A href="int.groovy?signs=%2B">Integers +</A><BR/>
                		<A href="int.groovy?signs=%2B,-">Integers +/-</A> <BR/>
            			<A href="int.groovy?signs=%2A">Integers &times;</A><BR/>
            			<A href="int.groovy?signs=:">Integers &divide;</A><BR/>
-           			<A href="int.groovy?signs=:&reminder=yes">Integers &divide; <BR/><sup>(with reminder)</sup></A><BR/>
            			<A href="customint.gtpl">Custom integers</A><BR/>
            		</p>
+                <p>
+                    <A href="threefract.groovy">3 Fractions</A><BR/>
+                    <A href="threeint.groovy">3 Integers</A><BR/>
+                </p>
+                <p>
+                    <A href="manyfract.gtpl">Many fractions</A><BR/>
+                    <A href="manyint.gtpl">Many integers</A><BR/>
+                </p>
            		<p>
            		    Donate to keep this site working
            		    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">

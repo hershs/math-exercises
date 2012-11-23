@@ -10,7 +10,7 @@
 </p>
 
 
-<% FormulaRenderer r = new FormulaRenderer(new FractionRenderer()) %>
+<% PresentationFactory r = new HTMLPresentationFactory() %>
 
 <div class="yesPrint">
 <% request.exercises.each { formula -> %>

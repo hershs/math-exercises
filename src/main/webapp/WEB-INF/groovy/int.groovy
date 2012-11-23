@@ -1,5 +1,5 @@
 import org.bernshtam.matex.FractionFormula
-import org.bernshtam.matex.PartsFraction
+import org.bernshtam.matex.RandomFormulaFactory
 
 int n = 10
 int maxWhole = 99
@@ -30,9 +30,11 @@ if (minWholeStr!=null) {
     minWhole = Integer.parseInt(minWholeStr)
 }
 
+RandomFormulaFactory factory = new RandomFormulaFactory()
+
 n.times {
     String sign = signs[r.nextInt(signs.length)]
-    FractionFormula formula = FractionFormula.createRandomIntegerFormula(maxWhole, minWhole, sign, reminder)
+    FractionFormula formula = factory.create2RandomIntegerFormula(maxWhole, minWhole, sign, reminder)
     exercises << formula
 
 }

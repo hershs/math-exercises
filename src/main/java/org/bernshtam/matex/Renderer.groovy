@@ -1,5 +1,7 @@
 package org.bernshtam.matex
 
+import org.bernshtam.matex.presentation.PresentationFactory
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,5 +10,9 @@ package org.bernshtam.matex
  * Time: 9:39 PM
  */
 public interface Renderer {
-    String render(Renderable r)
+    static String WHOLE_CLASS = "whole"
+    static String FRAC_CLASS = "frac"
+    static RESULT_CLASS = "result"
+
+    String render(PresentationFactory factory, Renderable r)
 }

@@ -8,8 +8,7 @@ int maxDen = 7
 Random r = new Random(System.currentTimeMillis())
 
 def exercises = []
-String signsString = request.getParameter("signs")
-def signs = signsString.split(",")
+
 
 // Optional params
 String nStr =   request.getParameter("n")
@@ -30,8 +29,7 @@ if (maxDenStr!=null) {
 RandomFormulaFactory factory = new RandomFormulaFactory()
 
 n.times {
-    String sign = signs[r.nextInt(signs.length)]
-    FractionFormula formula = factory.createRandom2FractionFormula(maxWhole, maxDen, sign)
+    FractionFormula formula = factory.createRandom3FractionFormula(maxWhole, maxDen)
     exercises << formula
 }
 

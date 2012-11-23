@@ -2,6 +2,8 @@ import org.bernshtam.matex.FractionFormula
 import org.bernshtam.matex.RandomFormulaFactory
 
 int n = 10
+int m = 3
+
 int maxWhole = 6
 int maxDen = 7
 
@@ -17,6 +19,11 @@ if (nStr!=null) {
     n = Integer.parseInt(nStr)
 }
 
+String mStr =   request.getParameter("m")
+if (mStr!=null) {
+    m = Integer.parseInt(mStr)
+}
+
 String maxWholeStr =   request.getParameter("maxwhole")
 if (maxWholeStr!=null) {
     maxWhole = Integer.parseInt(maxWholeStr)
@@ -30,8 +37,8 @@ if (maxDenStr!=null) {
 RandomFormulaFactory factory = new RandomFormulaFactory()
 
 n.times {
-    String sign = signs[r.nextInt(signs.length)]
-    FractionFormula formula = factory.createRandom2FractionFormula(maxWhole, maxDen, sign)
+
+    FractionFormula formula = factory.createManyRandomFractionFormula(maxWhole, maxDen, signs, m )
     exercises << formula
 }
 
