@@ -6,8 +6,6 @@ int m = 4
 int maxWhole = 99
 int minWhole = 10
 
-Random r = new Random(System.currentTimeMillis())
-
 def exercises = []
 String signsString = request.getParameter("signs")
 def signs = signsString.split(",")
@@ -43,5 +41,6 @@ n.times {
 
 }
 
+request['type'] = 'Integers'
 request['exercises'] = exercises
 forward "exercise.gtpl"

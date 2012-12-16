@@ -1,9 +1,5 @@
+all "/listsaved", forward: "/listsaved.groovy"
+all "/save", forward: "/save.groovy"
+all "/load", forward: "/load.groovy"
+all "/remove", forward: "/remove.groovy"
 
-
-
-// routes for the blobstore service example
-//get "/upload",  forward: "/upload.gtpl"
-//get "/success", forward: "/success.gtpl"
-//get "/failure", forward: "/failure.gtpl"
-
-//get "/favicon.ico", redirect: "/images/gaelyk-small-favicon.png"

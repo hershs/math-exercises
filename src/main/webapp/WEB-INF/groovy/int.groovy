@@ -39,5 +39,6 @@ n.times {
 
 }
 
+request['type'] = 'Integers'
 request['exercises'] = exercises
 forward "exercise.gtpl"

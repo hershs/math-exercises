@@ -1,5 +1,9 @@
 package org.bernshtam.matex
 
+import com.google.code.twig.ObjectDatastoreFactory
+import com.google.code.twig.annotation.Child
+import com.google.code.twig.annotation.Entity
+import com.google.code.twig.annotation.Id
 import org.apache.commons.lang3.math.Fraction
 
 /**
@@ -8,6 +12,7 @@ import org.apache.commons.lang3.math.Fraction
  * Date: 11/18/12
  * Time: 10:26 PM
  */
+
 class FractionNumber implements Renderable, Computable {
 
     private static Random r = new Random(System.currentTimeMillis())
@@ -28,9 +33,13 @@ class FractionNumber implements Renderable, Computable {
         return new FractionNumber(whole, 0, 1)
     }
 
+
+
     Fraction f
+    @Id long id
 
-
+    FractionNumber() {
+    }
 
     FractionNumber(Fraction f) {
         this.f = f

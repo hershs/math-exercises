@@ -4,6 +4,11 @@
     </listener>
 
     <servlet>
+        <servlet-name>InitServlet</servlet-name>
+        <servlet-class>org.bernshtam.matex.servlets.InitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
         <servlet-name>GroovletServlet</servlet-name>
         <servlet-class>groovyx.gaelyk.GaelykServlet</servlet-class>
         <init-param>
@@ -41,6 +46,10 @@
     <servlet-mapping>
         <servlet-name>TemplateServlet</servlet-name>
         <url-pattern>*.gtpl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InitServlet</servlet-name>
+        <url-pattern>1</url-pattern>
     </servlet-mapping>
 
     <filter-mapping>

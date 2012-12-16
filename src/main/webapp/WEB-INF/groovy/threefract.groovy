@@ -33,5 +33,6 @@ n.times {
     exercises << formula
 }
 
+request['type'] = 'Fractions'
 request['exercises'] = exercises
 forward "exercise.gtpl"

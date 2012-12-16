@@ -5,7 +5,6 @@ int n = 10
 int maxWhole = 99
 int minWhole = 10
 
-Random r = new Random(System.currentTimeMillis())
 
 def exercises = []
 
@@ -35,5 +34,6 @@ n.times {
 
 }
 
+request['type'] = 'Integers'
 request['exercises'] = exercises
 forward "exercise.gtpl"

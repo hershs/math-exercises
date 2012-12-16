@@ -1,11 +1,15 @@
 package org.bernshtam.matex
 
+import com.google.code.twig.ObjectDatastoreFactory
+import groovyx.gaelyk.datastore.Entity
+
 /**
  * Created with IntelliJ IDEA.
  * User: pavelber
  * Date: 11/21/12
  * Time: 10:00 PM
  */
+@com.google.code.twig.annotation.Entity
 enum Sign implements Renderable {
 
 
@@ -46,4 +50,6 @@ enum Sign implements Renderable {
         while (( s = random())==DIV);
         return s
     }
+
+
 }

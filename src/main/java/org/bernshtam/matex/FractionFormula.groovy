@@ -1,4 +1,10 @@
 package org.bernshtam.matex
+
+import com.google.code.twig.ObjectDatastoreFactory
+import com.google.code.twig.annotation.Child
+import com.google.code.twig.annotation.Entity
+import com.google.code.twig.annotation.Id
+
 /**
  * Created with IntelliJ IDEA.
  * User: pavelber
@@ -7,10 +13,14 @@ package org.bernshtam.matex
  */
 class FractionFormula extends BaseComputable {
 
-    private static Random r = new Random(System.currentTimeMillis())
+
 
     List<BaseComputable> computables = []
     List<Sign> signs = []
+    @Id long id
+
+    FractionFormula() {
+    }
 
     FractionFormula(List<BaseComputable> computables, List<Sign> signs) {
         this.computables = computables
