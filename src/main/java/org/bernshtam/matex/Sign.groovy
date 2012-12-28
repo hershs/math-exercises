@@ -41,14 +41,22 @@ enum Sign implements Renderable {
         return  Sign.enumConstants[r.nextInt(Sign.enumConstants.length)]
     }
 
-    static Sign random(String [] possible) {
-        return  Sign.fromString(possible[r.nextInt(possible.length)])
+    static Sign random(def possible) {
+        return  Sign.fromString(possible[r.nextInt(possible.size())])
     }
 
     static Sign randomExceptDiv() {
         Sign s
         while (( s = random())==DIV);
         return s
+    }
+
+    static def stringValues() {
+        Sign[] v = values()
+        def sv = []
+        v.each { sv << it.sign}
+
+        return sv
     }
 
 

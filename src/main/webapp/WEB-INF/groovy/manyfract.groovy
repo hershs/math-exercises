@@ -11,7 +11,7 @@ Random r = new Random(System.currentTimeMillis())
 
 def exercises = []
 String signsString = request.getParameter("signs")
-def signs = signsString.split(",")
+def signs = signsString.split(",") as List
 
 // Optional params
 String nStr =   request.getParameter("n")

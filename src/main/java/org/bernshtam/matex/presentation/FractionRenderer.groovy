@@ -19,12 +19,16 @@ class FractionRenderer implements Renderer {
         }
         FractionNumber t = r as FractionNumber
         StringBuilder builder = new StringBuilder()
-        if (t.printInt())
-            builder.append("<span class='${WHOLE_CLASS}'>${t.properWhole}</span>\n")
-        if (t.printFrac()) {
-            builder.append("<span class='${FRAC_CLASS}'><sup>${t.properNumerator}</sup>\n")
-            builder.append("<span>/</span>\n")
-            builder.append("<sub> ${t.denominator} </sub></span>\n")
+        if (t.decimal) {
+            builder.append("<span class='${WHOLE_CLASS}'>${t.value()}</span>\n")
+        } else {
+            if (t.printInt())
+                builder.append("<span class='${WHOLE_CLASS}'>${t.properWhole}</span>\n")
+            if (t.printFrac()) {
+                builder.append("<span class='${FRAC_CLASS}'><sup>${t.properNumerator}</sup>\n")
+                builder.append("<span>/</span>\n")
+                builder.append("<sub> ${t.denominator} </sub></span>\n")
+            }
         }
         return builder.toString()
     }

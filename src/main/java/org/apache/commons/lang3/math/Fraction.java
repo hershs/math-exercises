@@ -32,14 +32,8 @@ import java.math.BigInteger;
  * @since 2.0
  * @version $Id: Fraction.java 1199894 2011-11-09 17:53:59Z ggregory $
  */
-public class Fraction extends Number implements Comparable<Fraction> {
+public class Fraction implements Comparable<Fraction> {
 
-    /**
-     * Required for serialization support. Lang version 2.0.
-     * 
-     * @see java.io.Serializable
-     */
-    private static final long serialVersionUID = 65382027393090L;
 
     /**
      * <code>Fraction</code> representation of 0.
@@ -427,7 +421,6 @@ public class Fraction extends Number implements Comparable<Fraction> {
      *
      * @return the whole number fraction part
      */
-    @Override
     public int intValue() {
         return numerator / denominator;
     }
@@ -438,7 +431,6 @@ public class Fraction extends Number implements Comparable<Fraction> {
      *
      * @return the whole number fraction part
      */
-    @Override
     public long longValue() {
         return (long) numerator / denominator;
     }
@@ -449,7 +441,6 @@ public class Fraction extends Number implements Comparable<Fraction> {
      *
      * @return the fraction as a <code>float</code>
      */
-    @Override
     public float floatValue() {
         return (float) numerator / (float) denominator;
     }
@@ -460,7 +451,6 @@ public class Fraction extends Number implements Comparable<Fraction> {
      *
      * @return the fraction as a <code>double</code>
      */
-    @Override
     public double doubleValue() {
         return (double) numerator / (double) denominator;
     }

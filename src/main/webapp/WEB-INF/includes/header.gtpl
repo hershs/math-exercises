@@ -78,7 +78,7 @@
 
 <div id="container">
     <div id="header" class="noPrint">
-        <h1><A HREF="/">Math exercises generator</A></h1>
+        <h1><A HREF="/">${i18n.title}</A></h1>
         <h2>Generate math exercises for your children and check answers</h2><br/>
         <hr/>
     </div>
@@ -94,30 +94,32 @@
             <% } %>
         </div>
 
-        <h3>2 Fractions</h3>
+        <h3>Fractions</h3>
         <p>
-            <A href="fract.groovy?signs=%2B">Fractions +</A><BR/>
-            <A href="fract.groovy?signs=%2B,-">Fractions +/-</A> <BR/>
-            <A href="fract.groovy?signs=%2A">Fractions &times;</A><BR/>
-            <A href="fract.groovy?signs=:">Fractions &divide;</A><BR/>
-            <A href="customfrac.gtpl">Custom fractions</A><BR/>
+            <A href="manyfract.groovy?signs=%2B&n=10&m=2&maxwhole=6&maxden=7">Fractions +</A><BR/>
+            <A href="manyfract.groovy?signs=%2B,-&n=10&m=2&maxwhole=6&maxden=7">Fractions +/-</A> <BR/>
+            <A href="manyfract.groovy?signs=%2A&n=10&m=2&maxwhole=6&maxden=7">Fractions &times;</A><BR/>
+            <A href="manyfract.groovy?signs=:&n=10&m=2&maxwhole=6&maxden=7">Fractions &divide;</A><BR/>
+            <A href="manyfract.gtpl">Custom</A><BR/>
         </p>
-        <h3>2 Integers</h3>
+        <h3>Integers</h3>
         <p>
-            <A href="int.groovy?signs=%2B">Integers +</A><BR/>
-            <A href="int.groovy?signs=%2B,-">Integers +/-</A> <BR/>
-            <A href="int.groovy?signs=%2A">Integers &times;</A><BR/>
-            <A href="int.groovy?signs=:">Integers &divide;</A><BR/>
-            <A href="customint.gtpl">Custom integers</A><BR/>
+            <A href="manyint.groovy?signs=%2B&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">Integers +</A><BR/>
+            <A href="manyint.groovy?signs=%2B,-&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">Integers +/-</A> <BR/>
+            <A href="manyint.groovy?signs=%2A&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">Integers &times;</A><BR/>
+            <A href="manyint.groovy?signs=:&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">Integers &divide;</A><BR/>
+            <A href="manyint.gtpl">Custom</A><BR/>
         </p>
+         <h3>Decimal</h3>
         <p>
-            <A href="threefract.groovy">3 Fractions</A><BR/>
-            <A href="threeint.groovy">3 Integers</A><BR/>
+            <A href="decimal.groovy?signs=%2B&n=10&m=2&maxwhole=10&maxden=7">Decimals +</A><BR/>
+            <A href="decimal.groovy?signs=%2B,-&n=10&m=2&maxwhole=10&maxden=7">Decimals +/-</A> <BR/>
+            <A href="decimal.groovy?signs=%2A&n=10&m=2&maxwhole=10&maxden=7">Decimals &times;</A><BR/>
+            <A href="decimal.groovy?signs=:&n=10&m=2&maxwhole=10&maxden=7">Decimals &divide;</A><BR/>
+            <A href="decimal.gtpl">Custom</A><BR/>
         </p>
-        <p>
-            <A href="manyfract.gtpl">Many fractions</A><BR/>
-            <A href="manyint.gtpl">Many integers</A><BR/>
-        </p>
+
+
         <p>
             <A href="customshapes.gtpl"><h3>Shapes</h3></A><BR/>
         </p>

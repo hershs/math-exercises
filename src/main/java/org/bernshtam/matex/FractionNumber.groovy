@@ -5,6 +5,7 @@ import com.google.code.twig.annotation.Child
 import com.google.code.twig.annotation.Entity
 import com.google.code.twig.annotation.Id
 import org.apache.commons.lang3.math.Fraction
+import org.bernshtam.matex.util.FactorUtils
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,6 +21,50 @@ class FractionNumber implements Renderable, Computable {
     static FractionNumber createRandom(int intpartmax, int numMax, int denMax) {
         return new FractionNumber(r.nextInt(intpartmax), r.nextInt(numMax) + 1, r.nextInt(denMax) + 2)
     }
+
+    static FractionNumber createDecimalRandom(int intpartmax) {
+        def number = new FractionNumber(r.nextInt(intpartmax), r.nextInt(9) + 1, random10())
+        number.decimal = true
+        return number
+    }
+
+    static def GOOD_NUMBERS = [1, 2, 4, 5, 8]
+
+    static int goodRandomNumber() {
+        return GOOD_NUMBERS[r.nextInt(GOOD_NUMBERS.size())]
+    }
+
+    static FractionNumber createGoodDivDecimalRandom(FractionNumber dividend) {
+        int n = dividend.numerator
+        int m = FactorUtils.getRandomFactor(n)
+        def number = new FractionNumber(m, 10)
+        number.decimal = true
+        return number
+    }
+
+    static FractionNumber createGoodDecimalRandom(int intpartmax) {
+        int goodInt = FactorUtils.getGoodInt(intpartmax * 100)
+
+        def number = new FractionNumber(goodInt, 100)
+        number.decimal = true
+        return number
+    }
+
+    static FractionNumber createGoodIntegerRandom(int max, int min) {
+        int goodInt = FactorUtils.getGoodInt(max, min)
+
+        def number = new FractionNumber(goodInt,0,1)
+
+        return number
+    }
+
+    static FractionNumber createGoodDivIntegerRandom(FractionNumber dividend) {
+        int n = dividend.properWhole
+        int m = FactorUtils.getRandomFactor(n)
+        def number = new FractionNumber(m)
+        return number
+    }
+
 
     static FractionNumber createRandom(int intpartmax, int denMax) {
         def den = r.nextInt(denMax - 1) + 2
@@ -37,6 +82,7 @@ class FractionNumber implements Renderable, Computable {
 
     Fraction f
     @Id long id
+    boolean decimal = false
 
     FractionNumber() {
     }
@@ -49,12 +95,18 @@ class FractionNumber implements Renderable, Computable {
         f = Fraction.getFraction(num, den)
     }
 
+    FractionNumber(double d) {
+        f = Fraction.getFraction(d)
+    }
+
     FractionNumber(int intpart, int num, int den) {
         f = Fraction.getFraction(
                 nonZeroSign(intpart) * nonZeroSign(num) *
                         (Math.abs(intpart) * den + Math.abs(num)),
                 den)
     }
+
+
 
 
 

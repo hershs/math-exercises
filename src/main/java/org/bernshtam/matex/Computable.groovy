@@ -8,4 +8,6 @@ package org.bernshtam.matex
  */
 public interface Computable {
     FractionNumber compute()
+    boolean isDecimal()
+    void setDecimal(boolean c)
 }

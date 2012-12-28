@@ -14,7 +14,6 @@ import com.google.code.twig.annotation.Id
 class FractionFormula extends BaseComputable {
 
 
-
     List<BaseComputable> computables = []
     List<Sign> signs = []
     @Id long id
@@ -28,17 +27,17 @@ class FractionFormula extends BaseComputable {
     }
 
     FractionFormula(Computable f1, Computable f2, Sign sign) {
-        computables<<f1
-        computables<<f2
-        signs<<sign
+        computables << f1
+        computables << f2
+        signs << sign
     }
 
     FractionFormula(Computable f1, Computable f2, Computable f3, Sign sign1, Sign sign2) {
-        computables<<f1
-        computables<<f2
-        computables<<f3
-        signs<<sign1
-        signs<<sign2
+        computables << f1
+        computables << f2
+        computables << f3
+        signs << sign1
+        signs << sign2
     }
 
 
@@ -48,15 +47,16 @@ class FractionFormula extends BaseComputable {
         List<BaseComputable> c = computables.clone() as List<BaseComputable>
         List<Sign> s = signs.clone() as List<Sign>
 
-        while(s.size() > 0 ) {
-            Sign max = s.max{ it.ordinal()}
+        while (s.size() > 0) {
+            Sign max = s.max { it.ordinal()}
             int imax = s.indexOf(max)
-            FractionNumber computable = compute(c[imax], c[imax+1], s[imax])
+            FractionNumber computable = compute(c[imax], c[imax + 1], s[imax])
             s.remove(imax)
-            c.remove(imax+1)
+            c.remove(imax + 1)
             c[imax] = computable
         }
 
+        c[0].decimal = decimal
         return c[0]
     }
 
@@ -69,8 +69,20 @@ class FractionFormula extends BaseComputable {
             case Sign.DIV: res = f1 / f2; break;
             default: throw new Exception("Undefined op $sign")
         }
-
+        res.decimal = f1.decimal && f2.decimal
         return res
+    }
+
+    @Override
+    boolean isDecimal() {
+        boolean decimal = true
+        computables.each {decimal &= it.decimal}
+        return decimal
+    }
+
+    @Override
+    void setDecimal(boolean c) {
+
     }
 
 

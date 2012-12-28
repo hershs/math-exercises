@@ -8,7 +8,7 @@ int minWhole = 10
 
 def exercises = []
 String signsString = request.getParameter("signs")
-def signs = signsString.split(",")
+def signs = signsString.split(",") as List
 
 
 // Optional params

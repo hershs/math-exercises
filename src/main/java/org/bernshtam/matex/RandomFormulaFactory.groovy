@@ -10,150 +10,110 @@ class RandomFormulaFactory {
 
     private static Random r = new Random(System.currentTimeMillis())
 
-    FractionFormula createRandom2FractionFormula(int maxWhole, int maxDenom, String sign) {
-
-        FractionFormula formula
-        while (true) {
-            FractionNumber f1 = FractionNumber.createRandom(maxWhole, maxDenom)
-            FractionNumber f2 = FractionNumber.createRandom(maxWhole, maxDenom)
-
-            formula = new FractionFormula(f1, f2, Sign.fromString(sign))
-
-
-            FractionNumber res = formula.compute()
-            if (!res.negative && res.value() != 0) {
-                break
-            }
-        }
-
-        return formula
-
-    }
-
-    FractionFormula createRandom3FractionFormula(int maxWhole, int maxDenom) {
-
-        FractionFormula formula
-        while (true) {
-            FractionNumber f1 = FractionNumber.createRandom(maxWhole, maxDenom)
-            FractionNumber f2 = FractionNumber.createRandom(maxWhole, maxDenom)
-            FractionNumber f3 = FractionNumber.createRandom(maxWhole, maxDenom)
-
-            formula = new FractionFormula(f1, f2, f3, Sign.random(), Sign.random())
-
-            FractionNumber res
-            try {  res = formula.compute() }
-            catch (ArithmeticException e) { continue }
-
-
-            if (!res.negative && res.value() != 0) {
-                break
-            }
-        }
-
-        return formula
-
-    }
-
-    FractionFormula create2RandomIntegerFormula(int max, int min, String sign, boolean withremainder) {
-
-        FractionFormula formula
-
-        while (true) {
-            FractionNumber f1
-            FractionNumber f2
-            if (sign != ":") {
-                f1 = FractionNumber.createRandomInteger(max, min)
-                f2 = FractionNumber.createRandomInteger(max, min)
-            } else if (withremainder) {
-                f1 = FractionNumber.createRandomInteger(max, 2 * min)
-                f2 = FractionNumber.createRandomInteger((int) f1.properWhole, min)
-            } else {
-                f2 = FractionNumber.createRandomInteger(max, min)
-                f1 = new FractionNumber((2 + r.nextInt(8)) * f2.properWhole, 0, 1)
-            }
-
-            formula = new FractionFormula(f1, f2, Sign.fromString(sign))
-
-            FractionNumber res
-            try {  res = formula.compute() }
-            catch (ArithmeticException e) { continue }
-
-
-
-            if (!res.negative && !res.lessThanOne() && res.value() != 0) {
-                break;
-            }
-        }
-
-
-
-
-        return formula
-    }
-
-    FractionFormula create3RandomIntegerFormula(int max, int min) {
-
+    FractionFormula createManyRandomIntegerFormula(int maxint, int minint, def signs, int m) {
         FractionFormula formula
 
         while (true) {
 
-            FractionNumber f1 = FractionNumber.createRandomInteger(max, min)
-            FractionNumber f2 = FractionNumber.createRandomInteger(max, min)
-            FractionNumber f3 = FractionNumber.createRandomInteger(max, min)
+            boolean needGoodDiv = false
 
-
-            formula = new FractionFormula(f1, f2, f3, Sign.randomExceptDiv(), Sign.random())
-
-            FractionNumber res
-            try {  res = formula.compute() }
-            catch (ArithmeticException e) { continue }
-
-
-
-            if (!res.negative && res.properNumerator == 0 && res.value() != 0) {
-                break;
-            }
-        }
-
-
-
-
-        return formula
-    }
-
-    FractionFormula createManyRandomIntegerFormula(int maxint, int minint, String[] signs, int m) {
-        FractionFormula formula
-
-        while (true) {
-
+            def integer
             def f = []
             def s = []
             for (int i = 0; i < m - 1; i++) {
-                f << FractionNumber.createRandomInteger(maxint, minint)
-                s << Sign.random(signs)
+                if (needGoodDiv)
+                    integer = FractionNumber.createGoodDivIntegerRandom(f[-1])
+                else
+                    integer = FractionNumber.createGoodIntegerRandom(maxint, minint)
+                f << integer
+
+                def sign;
+                if (needGoodDiv && signs.size()>1) {
+                    sign = Sign.random(signs - '-')
+                } else {
+                    sign = Sign.random(signs)
+                }
+
+                s << sign
+
+                if (sign == Sign.DIV)
+                    needGoodDiv = true
+                else
+                    needGoodDiv = false
             }
-            f << FractionNumber.createRandomInteger(maxint, minint)
+
+             if (needGoodDiv)
+                    integer = FractionNumber.createGoodDivIntegerRandom(f[-1])
+                else
+                    integer = FractionNumber.createGoodIntegerRandom(maxint, minint)
+                f << integer
 
             formula = new FractionFormula(f, s)
 
             FractionNumber res
-             try {  res = formula.compute() }
+            try { res = formula.compute() }
             catch (ArithmeticException e) { continue }
-
-
 
             if (!res.negative && res.value() != 0) {
                 break
             }
         }
 
+        return formula
+    }
+
+    FractionFormula createManyRandomDecimalFormula(int maxWhole, def signs, int m) {
+
+        FractionFormula formula
+
+        while (true) {
+
+            boolean needGoodDiv = false
 
 
+            def decimal
+            def f = []
+            def s = []
+            for (int i = 0; i < m - 1; i++) {
+
+                if (needGoodDiv)
+                    decimal = FractionNumber.createGoodDivDecimalRandom(f[-1])
+                else
+                    decimal = FractionNumber.createGoodDecimalRandom(maxWhole)
+                f << decimal
+
+                def sign = Sign.random(signs)
+                s << sign
+
+                if (sign == Sign.DIV)
+                    needGoodDiv = true
+                else
+                    needGoodDiv = false
+            }
+
+            if (needGoodDiv)
+                decimal = FractionNumber.createGoodDivDecimalRandom(f[-1])
+            else
+                decimal = FractionNumber.createGoodDecimalRandom(maxWhole)
+            f << decimal
+
+            formula = new FractionFormula(f, s)
+
+            FractionNumber res
+
+            try { res = formula.compute() }
+            catch (ArithmeticException e) { continue }
+
+            if (!res.negative && res.value() != 0) {
+                break
+            }
+
+        }
 
         return formula
     }
 
-    FractionFormula createManyRandomFractionFormula(int maxWhole, int maxDenom, String[] signs, int m) {
+    FractionFormula createManyRandomFractionFormula(int maxWhole, int maxDenom, def signs, int m) {
 
         FractionFormula formula
 
@@ -172,7 +132,7 @@ class RandomFormulaFactory {
 
             FractionNumber res
 
-            try {  res = formula.compute() }
+            try { res = formula.compute() }
             catch (ArithmeticException e) { continue }
 
             if (!res.negative && res.value() != 0) {
