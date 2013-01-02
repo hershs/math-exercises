@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mathex:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="mathex-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="mathex:war exploded" />
+    </root>
+  </artifact>
+</component>

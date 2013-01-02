@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="matex">
+    <output-path>$PROJECT_DIR$/out/artifacts/matex</output-path>
+    <root id="archive" name="matex.war" />
+  </artifact>
+</component>
