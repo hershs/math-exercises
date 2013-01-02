@@ -16,8 +16,8 @@ html {
 #container {
     width: 95%;
     margin-right: auto;
-    margin-left: auto;
-    text-align: left;
+    margin-${i18n.text_align}: auto;
+    text-align: ${i18n.text_align};
     background-color: #FFFFFF;
 }
 #header {
@@ -25,7 +25,7 @@ html {
     padding-top:15px;
 }
 #topmenu {
-    text-align: left;
+    text-align: ${i18n.text_align};
     font-size: 15px;
     font-weight: bold;
     font-family: Helvetica, sans-serif;
@@ -43,7 +43,7 @@ hr {
     background-color:#CDCDCD;
     height: 1px;
     width: 100%;
-    text-align: left;
+    text-align: ${i18n.text_align};
 }
 h1 {
     font-size:28px;
@@ -62,23 +62,25 @@ h2 {
 h3 {
     color:#cc0000;
     font-size:15px;
-    text-align:left;
+    text-align:${i18n.text_align};
     font-weight:300;
     padding:5px;
     margin-top:5px;
 }
 
 #left {
-    float:left;
+    float:${i18n.text_align};
     width:100px;
     background-color:#FFFFFF;
     color:black;
+    direction:${i18n.direction};
 }
 
 #main {
-    margin					: 5px 5px 5px 120px;
+    margin					: 5px ${i18n.right_margin} 5px ${i18n.left_margin};
     padding					: 15px;
-    border-left				: 1px solid silver;
+    border-${i18n.text_align} : 1px solid silver;
+    direction:${i18n.direction};
 }
 p {
     color:black;
@@ -111,9 +113,10 @@ a:hover {
 .left {
     color:gray;
     background-color:#FFFFFF;
-    float:left;
+    float:${i18n.text_align};
     font-size:100%;
     margin-top:5px;
+
 }
 
 span.frac {
@@ -142,4 +145,8 @@ span.frac > sub {
 
 .result {
     visibility: hidden;
+}
+
+.yesPrint {
+    direction: ltr;
 }

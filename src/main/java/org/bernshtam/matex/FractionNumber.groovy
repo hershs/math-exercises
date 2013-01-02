@@ -19,7 +19,8 @@ class FractionNumber implements Renderable, Computable {
     private static Random r = new Random(System.currentTimeMillis())
 
     static FractionNumber createRandom(int intpartmax, int numMax, int denMax) {
-        return new FractionNumber(r.nextInt(intpartmax), r.nextInt(numMax) + 1, r.nextInt(denMax) + 2)
+        def den = r.nextInt(denMax) + 2
+        return new FractionNumber(r.nextInt(intpartmax), r.nextInt(Math.max(numMax, den)) , den)
     }
 
     static FractionNumber createDecimalRandom(int intpartmax) {

@@ -1,11 +1,11 @@
 <html>
 <head>
     <title>Math exercises generator</title>
-
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
     <link rel="shortcut icon" href="/images/note-favicon.png" type="image/png">
     <link rel="icon" href="/images/note-favicon.png" type="image/png">
 
-    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css.gtpl"/>
 
     <style media="screen">
         .noPrint {
@@ -79,52 +79,53 @@
 <div id="container">
     <div id="header" class="noPrint">
         <h1><A HREF="/">${i18n.title}</A></h1>
-        <h2>Generate math exercises for your children and check answers</h2><br/>
+        <h2>${i18n.title_description}</h2><br/>
+        <A HREF="encoding.groovy?encoding=en">English</A> <A HREF="encoding.groovy?encoding=ru">Русский</A> <A HREF="encoding.groovy?encoding=he">עברית</A>
         <hr/>
     </div>
     <!-- end header -->
 
-    <div id="left" class="noPrint">
+    <div id="left" class="noPrint" ">
         <div id="topmenu">
             <% if (!user) { %>
-            <p><A href="${users.createLoginURL('/')}">Login</A></p>
+            <p><A href="${users.createLoginURL('/')}">${i18n.menu_login}</A></p>
             <% } else { %>
-            <p><A href="/listsaved">My Exercises</A> <br/></p>
-            <p><A href="${users.createLogoutURL('/')}">Logout</A></p>
+            <p><A href="/listsaved">${i18n.menu_exercises}</A> <br/></p>
+            <p><A href="${users.createLogoutURL('/')}">${i18n.menu_logout}</A></p>
             <% } %>
         </div>
 
-        <h3>Fractions</h3>
+        <h3>${i18n.menu_fractions}</h3>
         <p>
-            <A href="manyfract.groovy?signs=%2B&n=10&m=2&maxwhole=6&maxden=7">Fractions +</A><BR/>
-            <A href="manyfract.groovy?signs=%2B,-&n=10&m=2&maxwhole=6&maxden=7">Fractions +/-</A> <BR/>
-            <A href="manyfract.groovy?signs=%2A&n=10&m=2&maxwhole=6&maxden=7">Fractions &times;</A><BR/>
-            <A href="manyfract.groovy?signs=:&n=10&m=2&maxwhole=6&maxden=7">Fractions &divide;</A><BR/>
-            <A href="manyfract.gtpl">Custom</A><BR/>
+            <A href="manyfract.groovy?signs=%2B&n=10&m=2&maxwhole=6&maxden=7">${i18n.menu_fractions} +</A><BR/>
+            <A href="manyfract.groovy?signs=%2B,-&n=10&m=2&maxwhole=6&maxden=7">${i18n.menu_fractions} +/-</A> <BR/>
+            <A href="manyfract.groovy?signs=%2A&n=10&m=2&maxwhole=6&maxden=7">${i18n.menu_fractions} &times;</A><BR/>
+            <A href="manyfract.groovy?signs=:&n=10&m=2&maxwhole=6&maxden=7">${i18n.menu_fractions} &divide;</A><BR/>
+            <A href="manyfract.gtpl">${i18n.menu_custom}</A><BR/>
         </p>
-        <h3>Integers</h3>
+        <h3>${i18n.menu_integers}</h3>
         <p>
-            <A href="manyint.groovy?signs=%2B&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">Integers +</A><BR/>
-            <A href="manyint.groovy?signs=%2B,-&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">Integers +/-</A> <BR/>
-            <A href="manyint.groovy?signs=%2A&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">Integers &times;</A><BR/>
-            <A href="manyint.groovy?signs=:&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">Integers &divide;</A><BR/>
-            <A href="manyint.gtpl">Custom</A><BR/>
+            <A href="manyint.groovy?signs=%2B&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">${i18n.menu_integers} +</A><BR/>
+            <A href="manyint.groovy?signs=%2B,-&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">${i18n.menu_integers} +/-</A> <BR/>
+            <A href="manyint.groovy?signs=%2A&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">${i18n.menu_integers} &times;</A><BR/>
+            <A href="manyint.groovy?signs=:&n=10&m=2&maxwhole=99&minwhole=10&maxden=7">${i18n.menu_integers} &divide;</A><BR/>
+            <A href="manyint.gtpl">${i18n.menu_custom}</A><BR/>
         </p>
-         <h3>Decimal</h3>
+         <h3>${i18n.menu_decimals}</h3>
         <p>
-            <A href="decimal.groovy?signs=%2B&n=10&m=2&maxwhole=10&maxden=7">Decimals +</A><BR/>
-            <A href="decimal.groovy?signs=%2B,-&n=10&m=2&maxwhole=10&maxden=7">Decimals +/-</A> <BR/>
-            <A href="decimal.groovy?signs=%2A&n=10&m=2&maxwhole=10&maxden=7">Decimals &times;</A><BR/>
-            <A href="decimal.groovy?signs=:&n=10&m=2&maxwhole=10&maxden=7">Decimals &divide;</A><BR/>
-            <A href="decimal.gtpl">Custom</A><BR/>
+            <A href="decimal.groovy?signs=%2B&n=10&m=2&maxwhole=10&maxden=7">${i18n.menu_decimals} +</A><BR/>
+            <A href="decimal.groovy?signs=%2B,-&n=10&m=2&maxwhole=10&maxden=7">${i18n.menu_decimals} +/-</A> <BR/>
+            <A href="decimal.groovy?signs=%2A&n=10&m=2&maxwhole=10&maxden=7">${i18n.menu_decimals} &times;</A><BR/>
+            <A href="decimal.groovy?signs=:&n=10&m=2&maxwhole=10&maxden=7">${i18n.menu_decimals} &divide;</A><BR/>
+            <A href="decimal.gtpl">${i18n.menu_custom}</A><BR/>
         </p>
 
 
         <p>
-            <A href="customshapes.gtpl"><h3>Shapes</h3></A><BR/>
+            <A href="customshapes.gtpl"><h3>${i18n.menu_shapes}</h3></A><BR/>
         </p>
         <p>
-            Donate to keep this site working
+            ${i18n.menu_donate}
 
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_s-xclick">

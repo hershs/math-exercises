@@ -1,22 +1,22 @@
 <% include '/WEB-INF/includes/header.gtpl' %>
-<H3>Create your own fractions exercise</H3>
+<H3>${i18n.custom_shapes_title}</H3>
 <p>
 <form name="customShapesForm" action="shapes.groovy" method="post">
-Number of shapes: <input name="n" id="n" type="number" value="10" min="1" max="30"/><br/><br/>
-Include shapes types:
+${i18n.custom_num_shapes} <input name="n" id="n" type="number" value="10" min="1" max="30"/><br/><br/>
+${i18n.custom_shapes_types}
     <blockquote>
-        <input type="checkbox" name="shapetype" value="Cube"> Cube<br>
-        <input type="checkbox" name="shapetype" value="Cuboid"> Cuboid<br>
-        <input type="checkbox" name="shapetype"  checked="checked" value="Piramid"> Piramid<br>
-        <input type="checkbox" name="shapetype" value="Prism"> Prism<br>
-        <input type="checkbox" name="shapetype" value="Icosahedron"> Icosahedron<br>
-        <input type="checkbox" name="shapetype" value="Octahedron"> Octahedron<br>
-        <input type="checkbox" name="shapetype" value="Tetrahedron"> Tetrahedron<br>
+        <input type="checkbox" name="shapetype" value="Cube"> ${i18n.shapes_cube}<br>
+        <input type="checkbox" name="shapetype" value="Cuboid"> ${i18n.shapes_cuboid}<br>
+        <input type="checkbox" name="shapetype"  checked="checked" value="Piramid"> ${i18n.shapes_piramid}<br>
+        <input type="checkbox" name="shapetype" value="Prism"> ${i18n.shapes_prism}<br>
+        <input type="checkbox" name="shapetype" value="Icosahedron"> ${i18n.shapes_icosahedron}<br>
+        <input type="checkbox" name="shapetype" value="Octahedron"> ${i18n.shapes_octahedron}<br>
+        <input type="checkbox" name="shapetype" value="Tetrahedron"> ${i18n.shapes_tetrahedron}<br>
     </blockquote>
 
 <br/><br/>
 
-<input type="submit" value=" Generate " /></form>
+<input type="submit" value=" ${i18n.generate} " /></form>
 </p>
 <% include '/WEB-INF/includes/footer.gtpl' %>
 
